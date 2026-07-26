@@ -4,6 +4,10 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Relative asset paths — required for Electron's file:// protocol (absolute
+  // "/assets/..." paths 404 there since there's no server root to resolve
+  // against); also perfectly valid for a normal root-hosted web deploy.
+  base: './',
   plugins: [
     react(),
     VitePWA({
